@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Role Hubs - A&A Operations Hub</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Serif+Display&display=swap');
+
+  :root {
+    --bg: #0f1117;
+    --surface: #181c27;
+    --surface2: #1e2235;
+    --border: #2a2f45;
+    --accent: #4f6ef7;
+    --accent2: #38d9a9;
+    --text: #e8eaf0;
+    --muted: #7b82a0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(15,17,23,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 32px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 56px;
+  }
+  .nav-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px;
+    letter-spacing: -0.5px;
+    color: var(--text);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 4px; }
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: all 0.15s;
+  }
+  .nav-links a:hover { color: var(--text); background: var(--surface); }
+
+  .section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 64px 32px;
+  }
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 28px;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+  }
+  .section-sub {
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 28px;
+    line-height: 1.6;
+  }
+
+  .hub-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+  }
+  .hub-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    text-decoration: none;
+    color: var(--text);
+    transition: all 0.2s;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .hub-card:hover {
+    border-color: var(--accent);
+    background: var(--surface2);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(79,110,247,0.12);
+  }
+  .hub-icon { font-size: 28px; }
+  .hub-title { font-size: 16px; font-weight: 600; }
+  .hub-desc { font-size: 13px; color: var(--muted); line-height: 1.5; }
+  .hub-arrow {
+    margin-top: auto;
+    font-size: 12px;
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 24px 32px;
+    text-align: center;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  @media (max-width: 600px) {
+    nav { padding: 0 16px; }
+    .nav-links { display: none; }
+    .section { padding: 32px 16px; }
+    .hub-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">A<span>&</span>A</a>
+  <div class="nav-links">
+    <a href="/hubs/">Hubs</a>
+    <a href="/stores/">Stores</a>
+    <a href="/#how-we-work">How We Work</a>
+  </div>
+</nav>
+
+<div class="section">
+  <div class="section-label">Your Role</div>
+  <div class="section-title">Select your hub</div>
+  <div class="section-sub">Find your role below. Everything you need — overview, responsibilities, KPIs, SOPs, and tools — is inside.</div>
+
+  <div class="hub-grid">
+    <a href="/hubs/cs/" class="hub-card">
+      <div class="hub-icon">🧑‍💼</div>
+      <div class="hub-title">CS Hub</div>
+      <div class="hub-desc">Customer Service — Agents and Manager. Tickets, refunds, escalations, and SOPs.</div>
+      <div class="hub-arrow">Open Hub →</div>
+    </a>
+    <a href="/hubs/scm/" class="hub-card">
+      <div class="hub-icon">📦</div>
+      <div class="hub-title">Supply Chain Hub</div>
+      <div class="hub-desc">Fulfillment, delivery monitoring, supplier coordination, and delay management.</div>
+      <div class="hub-arrow">Open Hub →</div>
+    </a>
+    <a href="/hubs/dispute/" class="hub-card">
+      <div class="hub-icon">🛡️</div>
+      <div class="hub-title">Dispute Management Hub</div>
+      <div class="hub-desc">Chargebacks, Shopify disputes, Profit Eye, and evidence submission.</div>
+      <div class="hub-arrow">Open Hub →</div>
+    </a>
+    <a href="/hubs/backend/" class="hub-card">
+      <div class="hub-icon">🖥️</div>
+      <div class="hub-title">Backend Management Hub</div>
+      <div class="hub-desc">Team oversight, approvals, KPI monitoring, and weekly reporting.</div>
+      <div class="hub-arrow">Open Hub →</div>
+    </a>
+  </div>
+</div>
+
+<footer>A&A Operations Hub · All information is confidential and for internal use only.</footer>
+
+</body>
+</html>

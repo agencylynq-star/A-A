@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Master Store List - A&A Operations Hub</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Serif+Display&display=swap');
+
+  :root {
+    --bg: #0f1117;
+    --surface: #181c27;
+    --surface2: #1e2235;
+    --border: #2a2f45;
+    --accent: #4f6ef7;
+    --text: #e8eaf0;
+    --muted: #7b82a0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(15,17,23,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 32px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 56px;
+  }
+  .nav-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px;
+    letter-spacing: -0.5px;
+    color: var(--text);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 4px; }
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: all 0.15s;
+  }
+  .nav-links a:hover { color: var(--text); background: var(--surface); }
+
+  .section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 64px 32px;
+  }
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 28px;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+  }
+  .section-sub {
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 28px;
+    line-height: 1.6;
+  }
+
+  .search-bar {
+    width: 100%;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 16px;
+    color: var(--text);
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    margin-bottom: 20px;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+  .search-bar:focus { border-color: var(--accent); }
+  .search-bar::placeholder { color: var(--muted); }
+
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  .data-table th {
+    text-align: left;
+    padding: 8px 12px;
+    background: var(--surface2);
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--border);
+  }
+  .data-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+    color: var(--muted);
+  }
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table tr:hover td { background: var(--surface2); color: var(--text); }
+  .data-table a { color: var(--accent); text-decoration: none; }
+  .data-table a:hover { text-decoration: underline; }
+
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 24px 32px;
+    text-align: center;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  @media (max-width: 600px) {
+    nav { padding: 0 16px; }
+    .nav-links { display: none; }
+    .section { padding: 32px 16px; }
+    .data-table { font-size: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">A<span>&</span>A</a>
+  <div class="nav-links">
+    <a href="/hubs/">Hubs</a>
+    <a href="/stores/">Stores</a>
+    <a href="/#how-we-work">How We Work</a>
+  </div>
+</nav>
+
+<div class="section">
+  <div class="section-label">All Stores</div>
+  <div class="section-title">Master Store List</div>
+  <div class="section-sub">All 26 active stores. Use the Collab Code to request Shopify collaborator access via <a href="https://partners.shopify.com" target="_blank" style="color:var(--accent)">partners.shopify.com</a>.</div>
+  <input type="text" class="search-bar" id="storeSearch" placeholder="🔍  Search stores by name or country..." oninput="filterStores(this.value)">
+  <table class="data-table" id="storeTable">
+    <thead><tr><th>Store</th><th>Shop URL</th><th>OG Shopify URL</th><th>Collab Code</th><th>Country</th></tr></thead>
+    <tbody>
+      <tr><td>Lunellda</td><td><a href="https://lunellda.com" target="_blank">lunellda.com</a></td><td>lunellda.myshopify.com</td><td>7593</td><td>France</td></tr>
+      <tr><td>Luxiv</td><td><a href="https://luxiv.store" target="_blank">luxiv.store</a></td><td>ad7578-74.myshopify.com</td><td>8420</td><td>Netherlands & Belgium</td></tr>
+      <tr><td>Vinalma</td><td><a href="https://vinalma.com" target="_blank">vinalma.com</a></td><td>vinalma.myshopify.com</td><td>8375</td><td>Netherlands & Belgium</td></tr>
+      <tr><td>Glowblend</td><td><a href="https://glowblend.nl" target="_blank">glowblend.nl</a></td><td>35131f-3b.myshopify.com</td><td>4881</td><td>Netherlands & Belgium</td></tr>
+      <tr><td>Lovinal</td><td><a href="https://lovinal.shop" target="_blank">lovinal.shop</a></td><td>59ea01.myshopify.com</td><td>7230</td><td>Switzerland</td></tr>
+      <tr><td>Glowseva</td><td><a href="https://glowseva.shop" target="_blank">glowseva.shop</a></td><td>a8d0fc-1b.myshopify.com</td><td>6391</td><td>Sweden</td></tr>
+      <tr><td>Linelda</td><td><a href="https://linelda.shop" target="_blank">linelda.shop</a></td><td>28e505.myshopify.com</td><td>8531</td><td>Norway</td></tr>
+      <tr><td>Luxiov</td><td><a href="https://luxiov.shop" target="_blank">luxiov.shop</a></td><td>b889cd-4.myshopify.com</td><td>2868</td><td>Sweden</td></tr>
+      <tr><td>Lunelva</td><td><a href="https://lunelva.com" target="_blank">lunelva.com</a></td><td>9dpjvq-c1.myshopify.com</td><td>8950</td><td>Netherlands</td></tr>
+      <tr><td>Nordisk Sjarm</td><td><a href="https://nordisk-sjarm.com" target="_blank">nordisk-sjarm.com</a></td><td>82227d.myshopify.com</td><td>7140</td><td>Norway</td></tr>
+      <tr><td>Lonalux</td><td><a href="https://lonalux.com" target="_blank">lonalux.com</a></td><td>6w1bdw-bv.myshopify.com</td><td>7009</td><td>Poland</td></tr>
+      <tr><td>Luxinal</td><td><a href="https://luxinal.com" target="_blank">luxinal.com</a></td><td>0btxaf-4k.myshopify.com</td><td>5818</td><td>Poland</td></tr>
+      <tr><td>Luxan</td><td><a href="https://luxan.se" target="_blank">luxan.se</a></td><td>ccf3e0-db.myshopify.com</td><td>9833</td><td>Sweden</td></tr>
+      <tr><td>Lunirel</td><td><a href="https://lunirel.com" target="_blank">lunirel.com</a></td><td>7hybpd-1t.myshopify.com</td><td>3806</td><td>United Kingdom</td></tr>
+      <tr><td>Lumirya</td><td><a href="https://lumirya.co.uk" target="_blank">lumirya.co.uk</a></td><td>bfccfj-6r.myshopify.com</td><td>7194</td><td>United Kingdom</td></tr>
+      <tr><td>Luvans</td><td><a href="https://luvans.com" target="_blank">luvans.com</a></td><td>20286a-e8.myshopify.com</td><td>9502</td><td>United States</td></tr>
+      <tr><td>Lexians</td><td><a href="https://lexians.shop" target="_blank">lexians.shop</a></td><td>pzjq08-xc.myshopify.com</td><td>7805</td><td>United States</td></tr>
+      <tr><td>Lovinel</td><td><a href="https://lovinel.shop" target="_blank">lovinel.shop</a></td><td>2as17t-u6.myshopify.com</td><td>4861</td><td>United States</td></tr>
+      <tr><td>Lunexil</td><td><a href="https://lunexil.com" target="_blank">lunexil.com</a></td><td>xznz1w-ur.myshopify.com</td><td>3356</td><td>United States</td></tr>
+      <tr><td>Loxans</td><td><a href="https://loxans.com" target="_blank">loxans.com</a></td><td>a9860a-ef.myshopify.com</td><td>2608</td><td>United States</td></tr>
+      <tr><td>Glovera</td><td><a href="https://glovera.com.au" target="_blank">glovera.com.au</a></td><td>5pmnyg-an.myshopify.com</td><td>4410</td><td>Australia</td></tr>
+      <tr><td>Luxans (AU)</td><td><a href="http://luxans.com" target="_blank">luxans.com</a></td><td>601dd3-82.myshopify.com</td><td>6868</td><td>Australia</td></tr>
+      <tr><td>Damivas</td><td><a href="https://damivas.com" target="_blank">damivas.com</a></td><td>damivas.myshopify.com</td><td>7655</td><td>Canada</td></tr>
+      <tr><td>LXLAMPE</td><td><a href="https://lxlampe.com" target="_blank">lxlampe.com</a></td><td>iqkwjm-20.myshopify.com</td><td>4045</td><td>Denmark</td></tr>
+      <tr><td>Glowvana</td><td><a href="https://www.glowvana-shop.com" target="_blank">glowvana-shop.com</a></td><td>bena44-fj.myshopify.com</td><td>6749</td><td>Denmark</td></tr>
+      <tr><td>Trylixiva</td><td><a href="https://trylixiva.shop" target="_blank">trylixiva.shop</a></td><td>p2krzm-bj.myshopify.com</td><td>7005</td><td>Finland</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<footer>A&A Operations Hub · All information is confidential and for internal use only.</footer>
+
+<script>
+function filterStores(val) {
+  const rows = document.querySelectorAll('#storeTable tbody tr');
+  const q = val.toLowerCase();
+  rows.forEach(r => {
+    r.style.display = r.textContent.toLowerCase().includes(q) ? '' : 'none';
+  });
+}
+</script>
+
+</body>
+</html>
